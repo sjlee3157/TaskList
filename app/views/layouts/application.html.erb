@@ -11,6 +11,7 @@
 
   <body>
     <h1>New Rules</h1>
+    <h2>My Tasks for <%= Time.now.to_date.strftime("%a %b %d, %Y") %></h2>
     <%= yield %>
   </body>
 </html>
