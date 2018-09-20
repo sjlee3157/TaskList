@@ -2,5 +2,12 @@
 <ol>
   <% @tasks.each do |task| %>
   <li><%= "#{task.name}" %></li>
+    <ul>
+      <li><%= "#{task.description}" %></li>
+      <li>
+        <% task_status = task.completion_date %>
+        <% task_status ||= :incomplete %>
+        <%= "#{task_status}" %></li>
+    </ul>
   <% end %>
 </ol>
