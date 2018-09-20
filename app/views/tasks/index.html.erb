@@ -1,6 +1,6 @@
-<h2>Task List for <%= @date.strftime("%a %b %d, %Y") %></h2>
+<h2>My Tasks for <%= @date.strftime("%a %b %d, %Y") %></h2>
 <ol>
   <% @tasks.each do |task| %>
-  <li><%= task[:title] %></li>
+  <li><%= "#{task.name}" %></li>
   <% end %>
 </ol>
