@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
 # we have to pass :id to this route, or else the delete route won't have it.
   # get '/tasks/:id/confirm_destroy', to: 'tasks#confirm_destroy', as: 'confirm_destroy_task'
+<<<<<<< HEAD
   delete '/tasks/:id', to: 'tasks#destroy'
+=======
+  delete '/tasks/:id', to: 'tasks#destroy', as: 'destroy_task'
+>>>>>>> fc0695f6caadea36910ec0407c3a8da1fa03b27f
 
 end
