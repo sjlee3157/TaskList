@@ -14,9 +14,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    # if empty params, render :new
-    @task = Task.new(name: params[:task][:name],
-                     description: params[:task][:description])
+    # other invalid params?
+    if params[:task][:name] == "" || params[:task][:description] == ""
+      render:new
+    else
+      @task = Task.new(name: params[:task][:name],
+                       description: params[:task][:description])
+    end
     if @task.save
       redirect_to root_path
     else
