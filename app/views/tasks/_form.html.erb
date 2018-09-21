@@ -1,0 +1,11 @@
+<%= form_with model: @task do |f| %>
+<p><%= "#{message}" %></p>
+  <%= f.label :task %>
+  <%= f.text_field :name, placeholder: name_placeholder %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, placeholder: description_placeholder %>
+
+  <%= f.submit "Save Task", class: "new-task-button" %>
+
+<% end %>

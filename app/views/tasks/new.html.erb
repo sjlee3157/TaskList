@@ -1,19 +1,9 @@
 <h2>Create A New Task!</h2>
-<%= form_with model: @task do |f| %>
-<p>What should Dua Lipa do next?</p>
-  <%= f.label :task %>
-  <%= f.text_field :name %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.submit "Save Task", class: "new-task-button" %>
-
-<% end %>
-
-
-
-
+<%= render partial: "form",
+    locals: {message: @message,
+             name_placeholder: nil,
+             description_placeholder: nil,
+            } %>
 
 
 

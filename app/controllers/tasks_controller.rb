@@ -11,6 +11,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @message = "What should Dua Lipa do next?"
   end
 
   def create
