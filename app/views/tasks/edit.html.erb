@@ -3,8 +3,9 @@
 <%= render partial: "form",
     locals: {message: nil,
              button_title: 'Apply Changes',
-             name_placeholder: "#{@task.name}",
-             description_placeholder: "#{@task.description}",
+             name_placeholder: @task.name,
+             description_placeholder: @task.description,
             } %>
 
+<p><%= link_to "Nevermind", task_path %></p>
 <p>You're on the #edit page!</p>
