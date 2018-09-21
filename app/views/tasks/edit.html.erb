@@ -1,0 +1,20 @@
+<h2>Edit Your Task!</h2>
+<%= form_with model: @task do |f| %>
+  <%= f.label :edit_task_name %>
+  <%= f.text_field :name, placeholder: "#{@task.name}" %>
+
+  <%= f.label :edit_description %>
+  <%= f.text_field :description, placeholder: "#{@task.description}" %>
+
+  <%= f.submit "Update Task", class: "update-task-button" %>
+
+<% end %>
+
+
+
+
+
+
+
+
+<p>You're on the #edit page!</p>
