@@ -1,7 +1,13 @@
 <h2>Delete your task</h2>
-<p>You're about to delete "<%= @task.name %>"</p>
+<p>Task: "<%= @task.name %>"</p>
 <!-- refactor with _show partial view -->
-<p>Are you sure?</p>
 
 <!-- IDK what do to here (google) -->
+
+<%= form_with model: @task do |f| %>
+  <p>Are you sure you want to delete this task?</p>
+  <%= f.submit "Yes, Delete", class: "yes-delete-button" %>
+  <%= f.submit "Whoops, Don't Delete", class: "no-delete-button" %>
+<% end %>
+
 <p>You're on the #confirm_destroy page!</p>
