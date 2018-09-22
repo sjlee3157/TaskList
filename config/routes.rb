@@ -6,17 +6,13 @@ Rails.application.routes.draw do
   post '/tasks', to: 'tasks#create'
   # Why is it post '/tasks'? couldn't it be ANYTHING?
 
+  patch '/tasks/:id', to: 'tasks#toggle_complete', as: 'toggle_task_complete'
+
   get '/tasks/:id/edit', to: 'tasks#edit', as: 'edit_task'
   patch '/tasks/:id', to: 'tasks#update'
-  # How does this patch path work?
-  # does the order of stuff in here matter or something?
-  # so confused
-  # does :id come from the params memory or something?
+  # Why is it patch /tasks/:id?
 
-# we have to pass :id to this route, or else the delete route won't have it.
-  # get '/tasks/:id/confirm_destroy', to: 'tasks#confirm_destroy', as: 'confirm_destroy_task'
   delete '/tasks/:id', to: 'tasks#destroy', as: 'destroy_task'
-
 
   get '/tasks/:id', to: 'tasks#show', as: 'task'
 end

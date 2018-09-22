@@ -3,19 +3,39 @@
   <li><%= link_to "#{task.name}", task_path(task.id) %></li>
     <ul>
       <li><%= "#{task.description}" %></li>
-      <li>
-        <% task_status = task.completion_date %>
-        <% task_status ||= :incomplete %>
-        <%= "#{task_status}" %></li>
+        <!-- Task description -->
+
+      <li><%= "#{task.completion_date}" %></li>
+        <!-- Task completion date -->
+
+      <% if task.completion_date == nil %>
+        <% toggle_button_label = "Mark Task Complete" %>
+      <% else %>
+        <% toggle_button_label = "Mark Task Incomplete" %>
+      <% end %>
+      <!-- validate -->
+
+      <li><%= form_with model: @task, url: toggle_task_complete_path(task.id), method: :patch, class: "complete-task-form" do |f| %>
+            <%= f.submit toggle_button_label, class: "toggle-complete-task-button" %>
+          <% end %></li>
+        <!-- Mark complete -->
+
+
+      <li><p><%= link_to "Edit Task", edit_task_path(task.id) %></p></li>
+        <!-- Should Edit be a button? -->
+
+
+      <li><%= form_with model: @task, url: destroy_task_path(task.id), method: :delete, class: "delete-task-form", data: {confirm: 'Are you sure?'} do |f| %>
+            <%= f.submit "Delete This Task", class: "delete-task-button" %>
+          <% end %></li>
+        <!-- Delete task -->
     </ul>
   <% end %>
 </ol>
 
-<p><%= link_to "Create A New Task", new_task_path %></p>
-
 <!-- To do: -->
-<!-- Hover text for all links -->
-
+<!-- If you have no tasks, display "You have no tasks! Click "Create A New Task" to begin tasking!" -->
+<!-- Can I use CSS to display multiple views at once, so that I can remove the logic from the view? -->
 
 
 

@@ -2,13 +2,11 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.order(:id)
-    # @notice = notice
   end
 
   def show
     id = params[:id].to_i
     @task = Task.find_by(id: id)
-    # @notice = notice
   end
 
   def new
@@ -20,7 +18,6 @@ class TasksController < ApplicationController
     # other invalid params?
     name = params[:task][:name]
     description = params[:task][:description]
-        # why params[:task]? is it because of how the form uses :model ?
     if name == "" || description == ""
       render:new
     else
@@ -28,7 +25,7 @@ class TasksController < ApplicationController
                        description: description)
     end
     if task.save
-      redirect_to root_path, notice: "New task created."
+      redirect_to root_path, notice: "New task \"#{name}\" created."
     else
       render :new
     end
@@ -46,17 +43,29 @@ class TasksController < ApplicationController
     new_decription = params[:task][:description]
 # edge case: nil
     if task.update(name: new_name, description: new_decription)
-      redirect_to task_path, notice: "Task edits saved."
+      redirect_to task_path, notice: "Task edits saved for \"#{new_name}\"."
     else
-      render :edit, notice: "Edits not saved."
+      render :edit, notice: "Edits not saved for \"#{task.name}\"."
     end
   end
 
   def destroy
     id = params[:id].to_i
     task = Task.find_by(id: id)
-    task.destroy
-    redirect_to root_path, notice: "Task deleted."
+    deleted_task = task.destroy
+    redirect_to root_path, notice: "Task \"#{deleted_task.name}\" deleted."
+  end
+
+  def toggle_complete
+    id = params[:id].to_i
+    task = Task.find_by(id: id)
+    if task.completion_date == nil
+      task.update(completion_date: Date.today)
+      notice = "Congratulations! You completed \"#{task.name}\"!"
+    else
+      task.update(completion_date: nil)
+    end
+      redirect_to root_path
   end
 
 end

@@ -11,9 +11,13 @@
 
   <header>
     <h1>New Rules</h1>
-    <h2>My Tasks for <%= Time.now.to_date.strftime("%a %b %d, %Y") %></h2>
+    <h2>My Tasks for <%= Date.today.strftime("%a %b %d, %Y") %></h2>
     <sub><%= notice %> </sub>
   </header>
+  <nav>
+    <p><%= link_to "Create A New Task", new_task_path %></p>
+    <p><%= link_to "Back To All Tasks", root_path %></p>
+  </nav>
   <body>
     <%= yield %>
   </body>
