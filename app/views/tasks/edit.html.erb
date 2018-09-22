@@ -2,6 +2,9 @@
 
 <%= render partial: "form",
     locals: {message: nil,
+             url: update_task_path,
+             method: :patch,
+             form_class: "edit-task-form",
              button_title: 'Apply Changes',
              name_placeholder: @task.name,
              description_placeholder: @task.description,

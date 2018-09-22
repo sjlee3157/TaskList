@@ -20,14 +20,15 @@ class TasksController < ApplicationController
     description = params[:task][:description]
     if name == "" || description == ""
       render:new
+      # what's the difference between render and redirect_to?
     else
       task = Task.new(name: name,
-                       description: description)
+                      description: description)
     end
     if task.save
       redirect_to root_path, notice: "New task \"#{name}\" created."
     else
-      render :new
+      render:new
     end
   end
 
@@ -56,7 +57,7 @@ class TasksController < ApplicationController
     redirect_to root_path, notice: "Task \"#{deleted_task.name}\" deleted."
   end
 
-  def toggle_complete
+  def mark_unmark_complete
     id = params[:id].to_i
     task = Task.find_by(id: id)
     if task.completion_date == nil

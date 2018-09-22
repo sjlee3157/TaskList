@@ -1,36 +1,35 @@
 <ol>
   <% @tasks.each do |task| %>
+
   <li><%= link_to "#{task.name}", task_path(task.id) %></li>
+
     <ul>
+      <!-- Task description -->
       <li><%= "#{task.description}" %></li>
-        <!-- Task description -->
 
-      <li><%= "#{task.completion_date}" %></li>
-        <!-- Task completion date -->
-
-      <% if task.completion_date == nil %>
-        <% toggle_button_label = "Mark Task Complete" %>
-      <% else %>
-        <% toggle_button_label = "Mark Task Incomplete" %>
-      <% end %>
-      <!-- validate -->
-
-      <li><%= form_with model: @task, url: toggle_task_complete_path(task.id), method: :patch, class: "complete-task-form" do |f| %>
-            <%= f.submit toggle_button_label, class: "toggle-complete-task-button" %>
-          <% end %></li>
-        <!-- Mark complete -->
-
-
+      <!-- Edit Task -->
       <li><p><%= link_to "Edit Task", edit_task_path(task.id) %></p></li>
-        <!-- Should Edit be a button? -->
 
+      <!-- Mark / unmark complete -->
+      <!-- need to validate? -->
+    <% mark_unmark_button_name = %>
+      <% if task.completion_date == nil %>
+        <% "Mark Task Complete" %>
+      <% else %>
+        <% "Unmark Task Complete" %>
+      <% end %>
 
+      <li><%= form_with model: @task, url: mark_unmark_task_complete_path(task.id), method: :patch, class: "mark-unmark-task-form" do |f| %>
+            <%= f.submit mark_unmark_button_name, class: "mark-unmark-task-button" %>
+          <% end %></li>
+
+      <!-- Delete Task -->
       <li><%= form_with model: @task, url: destroy_task_path(task.id), method: :delete, class: "delete-task-form", data: {confirm: 'Are you sure?'} do |f| %>
             <%= f.submit "Delete This Task", class: "delete-task-button" %>
           <% end %></li>
-        <!-- Delete task -->
     </ul>
   <% end %>
+
 </ol>
 
 <!-- To do: -->
