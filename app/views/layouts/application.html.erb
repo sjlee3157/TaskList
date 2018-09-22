@@ -9,9 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <header>
     <h1>New Rules</h1>
     <h2>My Tasks for <%= Time.now.to_date.strftime("%a %b %d, %Y") %></h2>
+    <sub><%= notice %> </sub>
+  </header>
+  <body>
     <%= yield %>
   </body>
 </html>

@@ -2,11 +2,13 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.order(:id)
+    # @notice = notice
   end
 
   def show
     id = params[:id].to_i
     @task = Task.find_by(id: id)
+    # @notice = notice
   end
 
   def new
@@ -26,7 +28,7 @@ class TasksController < ApplicationController
                        description: description)
     end
     if task.save
-      redirect_to root_path
+      redirect_to root_path, notice: "New task created."
     else
       render :new
     end
@@ -44,9 +46,9 @@ class TasksController < ApplicationController
     new_decription = params[:task][:description]
 # edge case: nil
     if task.update(name: new_name, description: new_decription)
-      redirect_to task_path(id)
+      redirect_to task_path, notice: "Task edits saved."
     else
-      render :edit
+      render :edit, notice: "Edits not saved."
     end
   end
 
@@ -54,7 +56,7 @@ class TasksController < ApplicationController
     id = params[:id].to_i
     task = Task.find_by(id: id)
     task.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "Task deleted."
   end
 
 end
