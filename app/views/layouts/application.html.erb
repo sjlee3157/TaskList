@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TaskList</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <section class="wrapper">
+    <head>
+      <title>TaskList</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <header>
-    <h1>Taskrly</h1>
-    <h2>My Tasks for <%= Date.today.strftime("%a %b %d, %Y") %></h2>
-    <sub><%= notice %> </sub>
-  </header>
-  <nav>
-    <p><%= link_to "Create A New Task", new_task_path %></p>
-    <p><%= link_to "Back To All Tasks", root_path %></p>
-  </nav>
-  <body>
-    <%= yield %>
-  </body>
-  <footer>
-    <p>© 2018 sj @ ada</p>
-  </footer>
+    <header class="the-date-today">
+      <h1>It's <%= Date.today.strftime("%A %b %d, %Y") %>.</h1>
+    </header>
+    <section class="notice">
+      <%= notice %>
+    </section>
+    <section class = "greeting">
+      <h2><%= greet %>.</h2>
+    </section>
+    <nav>
+      <%= link_to "Create A New Task", new_task_path, class: "nav-link" %>
+      <%= link_to "Home (All Tasks)", root_path, class: "nav-link" %>
+    </nav>
+    <body>
+      <%= yield %>
+    </body>
+    <footer>
+      <p>© 2018 sj @ ada</p>
+    </footer>
+  </section>
 </html>

@@ -1,42 +1,41 @@
-<ol>
-  <% @tasks.each do |task| %>
+<section class="task-view">
+  <section class="create-task-bar">
+    <p>Create A New Task!</p>
+  </section>
+  <ol class="each-task">
+    <% @tasks.each do |task| %>
 
-  <li><%= link_to "#{task.name}", task_path(task.id) %></li>
+    <li><%= link_to "#{task.name}", task_path(task.id) %></li>
 
-    <ul>
-      <!-- Task description -->
-      <li><%= "#{task.description}" %></li>
+      <ul>
+        <!-- Task description -->
+        <li><%= "#{task.description}" %></li>
 
-      <!-- Edit Task -->
-      <li><p><%= link_to "Edit Task", edit_task_path(task.id) %></p></li>
+        <!-- Edit Task -->
+        <li><p><%= link_to "Edit Task", edit_task_path(task.id) %></p></li>
 
-      <!-- Mark / unmark complete -->
-      <!-- need to validate? -->
-    <% mark_unmark_button_name = %>
-      <% if task.completion_date == nil %>
-        <% "Mark Task Complete" %>
-      <% else %>
-        <% "Unmark Task Complete" %>
-      <% end %>
+        <!-- Mark / unmark complete -->
+      <% mark_unmark_button_name = %>
+        <% if task.completion_date == nil %>
+          <% "Mark Task Complete" %>
+        <% else %>
+          <% "Unmark Task Complete" %>
+        <% end %>
 
-      <li><%= form_with model: @task, url: mark_unmark_task_complete_path(task.id), method: :patch, class: "mark-unmark-task-form" do |f| %>
-            <%= f.submit mark_unmark_button_name, class: "mark-unmark-task-button" %>
-          <% end %></li>
+        <li><%= form_with model: @task, url: mark_unmark_task_complete_path(task.id), method: :patch, class: "mark-unmark-task-form" do |f| %>
+              <%= f.submit mark_unmark_button_name, class: "mark-unmark-task-button" %>
+            <% end %></li>
 
-      <!-- Delete Task -->
-      <li><%= form_with model: @task, url: destroy_task_path(task.id), method: :delete, class: "delete-task-form", data: {confirm: 'Are you sure?'} do |f| %>
-            <%= f.submit "Delete This Task", class: "delete-task-button" %>
-          <% end %></li>
-    </ul>
-  <% end %>
+        <!-- Delete Task -->
+        <li><%= form_with model: @task, url: destroy_task_path(task.id), method: :delete, class: "delete-task-form", data: {confirm: 'Are you sure?'} do |f| %>
+              <%= f.submit "Delete This Task", class: "delete-task-button" %>
+            <% end %></li>
+      </ul>
+    <% end %>
 
-</ol>
+  </ol>
 
-<!-- To do: -->
-<!-- If you have no tasks, display "You have no tasks! Click "Create A New Task" to begin tasking!" -->
-<!-- Can I use CSS to display multiple views at once, so that I can remove the logic from the view? -->
-
-
-
-
-<p>You're on the #index page!</p>
+    <% if @tasks.size < 1 %>
+      <%= "You have no tasks!" %>
+    <% end %>
+</section>

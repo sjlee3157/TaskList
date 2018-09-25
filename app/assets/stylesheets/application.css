@@ -13,3 +13,77 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+}
+
+.wrapper {
+  display: grid;
+  grid: 1fr 25px 500px 50px / 280px 800px 280px;
+  box-sizing: border-box;
+  grid-gap: 10px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.the-date-today {
+  text-align: center;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.notice {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.greeting {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  text-align: center;
+}
+
+.greeting > h2 {
+  line-height: 70px;
+  padding: 25px 0 0 0;
+  margin: 0;
+  border-bottom-style: groove;
+  border-bottom-width: medium;
+}
+
+nav {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  text-align: center;
+  padding: 20px;
+}
+
+nav > * {
+  display: block;
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+footer {
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+
+header h1 {
+  font-size: 50px;
+  padding: 20px 0 0 0;
+  margin: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding-bottom: 15px;
+}

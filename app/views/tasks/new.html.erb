@@ -1,5 +1,6 @@
-<h2>Create A New Task!</h2>
-<%= render partial: "form",
+<section class="task-view">
+  <h2>Create A New Task!</h2>
+    <%= render partial: "form",
     locals: {message: @message,
              url: create_task_path,
              method: :post,
@@ -8,8 +9,4 @@
              name_placeholder: nil,
              description_placeholder: nil,
             } %>
-
-
-
-
-<p>You're on the #new page!</p>
+</section>

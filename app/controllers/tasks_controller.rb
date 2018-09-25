@@ -5,13 +5,13 @@ class TasksController < ApplicationController
   end
 
   def show
-    id = params[:id].to_i
-    @task = Task.find_by(id: id)
+    @id = params[:id].to_i
+    @task = Task.find_by(id: @id)
   end
 
   def new
     @task = Task.new
-    @message = "What should Dua Lipa do next?"
+    @message = "What's your next task?"
   end
 
   def create
@@ -62,11 +62,11 @@ class TasksController < ApplicationController
     task = Task.find_by(id: id)
     if task.completion_date == nil
       task.update(completion_date: Date.today)
-      notice = "Congratulations! You completed \"#{task.name}\"!"
+      redirect_to root_path, notice: "Congratulations! You completed \"#{task.name}\"!"
     else
       task.update(completion_date: nil)
-    end
       redirect_to root_path
+    end
   end
 
 end
