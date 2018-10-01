@@ -15,8 +15,12 @@
  */
 
 html {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Raleway', sans-serif;
   height: 100%;
+}
+
+h1, h2 {
+  font-weight: 400;
 }
 
 .wrapper {
@@ -88,10 +92,51 @@ header h1 {
   padding-bottom: 15px;
 }
 
-.finished-task {
+*[class*="finished-task"] {
   text-decoration: line-through;
 }
 
-.incomplete-task {
+*[class*="incomplete-task"] {
   text-decoration: none;
+}
+
+a:link, a:visited {
+  color: hotpink;
+}
+
+a:hover {
+  background-color: hotpink;
+  color: white;
+}
+
+h3 {
+  padding: 3px;
+  font-size: 24px;
+  font-weight: 900;
+  background-color: white;
+}
+
+h3 a:visited, h3 a:link {
+  color: black;
+  background-color: white;
+}
+
+h3 a:hover {
+  color: hotpink;
+}
+
+button > a:link, button > a:hover, button > a:visited {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+}
+
+.each-task-sub-items {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.each-task-sub-items li {
+  flex-flow: row;
 }

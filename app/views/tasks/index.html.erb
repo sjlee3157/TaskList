@@ -9,14 +9,16 @@
     <% else %>
       <% text_decoration_class = "finished-task" %>
     <% end %>
-    <li><%= link_to "#{task.name}", task_path(task.id), class: text_decoration_class %></li>
 
-      <ul>
+        <!-- Task name -->
+    <h3><li><%= link_to "#{task.name}", task_path(task.id), class: "#{text_decoration_class + "-task-name"}" %></li></h3>
+
+      <ul class="each-task-sub-items">
         <!-- Task description -->
         <li class=<%= text_decoration_class %> ><%= "#{task.description}" %></li>
 
         <!-- Edit Task -->
-        <li><p><%= link_to "Edit Task", edit_task_path(task.id) %></p></li>
+        <li><button type="button"><%= link_to "Edit Task", edit_task_path(task.id) %></button></li>
 
         <!-- Mark / unmark complete -->
       <% mark_unmark_button_name = %>

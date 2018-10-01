@@ -4,11 +4,11 @@
   <% else %>
   <!-- Can I get this to show the task list number? -->
 
-    <h2>Task: <%= @task.name %></h2>
+    <h3><%= @task.name %></h2>
     <p>Description: <%= @task.description %></p>
     <% unless @task.completion_date.nil? %>
       <p>Completed on: <%= @task.completion_date.strftime("%a %b %d, %Y") %></p>
     <% end %>
-    <p><%= link_to "Edit Task", edit_task_path %></p>
+    <%= link_to "Edit Task", edit_task_path %>
   <% end %>
 </section>
