@@ -4,12 +4,16 @@
   </section>
   <ol class="each-task">
     <% @tasks.each do |task| %>
-
-    <li><%= link_to "#{task.name}", task_path(task.id) %></li>
+    <% if task.completion_date == nil %>
+      <% text_decoration_class = "incomplete-task" %>
+    <% else %>
+      <% text_decoration_class = "finished-task" %>
+    <% end %>
+    <li><%= link_to "#{task.name}", task_path(task.id), class: text_decoration_class %></li>
 
       <ul>
         <!-- Task description -->
-        <li><%= "#{task.description}" %></li>
+        <li class=<%= text_decoration_class %> ><%= "#{task.description}" %></li>
 
         <!-- Edit Task -->
         <li><p><%= link_to "Edit Task", edit_task_path(task.id) %></p></li>
